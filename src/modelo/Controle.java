@@ -106,26 +106,28 @@ public class Controle {
             this.canal = canal;
         }
     }
+
+    //Métodos de acesso
     
     //métodos de acesso (getter e setter) ao volume
-    private int getVolume() {
+    protected int getVolume() {
         if (isPower() == true){
             System.out.println("Volume " + volume);
         }return volume;
     }
  
-    private void setVolume(int volume) {
+    protected void setVolume(int volume) {
         if (isPower() == true){
         this.volume = volume;
         }
     }
 
     //métodos de acesso (is e setter) ao power
-    private boolean isPower() {
+    protected boolean isPower() {
         return this.power;
     }
 
-    private void setPower() {
+    protected void setPower() {
         power = !isPower();
         }
 }
