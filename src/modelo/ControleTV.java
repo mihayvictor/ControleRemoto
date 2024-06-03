@@ -1,5 +1,7 @@
 package modelo;
 
+import javax.swing.JOptionPane;
+
 public class ControleTV extends Controle{
     private int canal;
 
@@ -11,9 +13,9 @@ public class ControleTV extends Controle{
      public boolean power() {
         setPower();
         if (isPower() == true) {
-            System.out.println("TV ligada");
+            JOptionPane.showMessageDialog(null, "TV ligada", "Botão de power", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            System.out.println("TV desligada");
+            JOptionPane.showMessageDialog(null, "TV desligada", "Botão de power", JOptionPane.INFORMATION_MESSAGE);        
         }
         return isPower();
     }
