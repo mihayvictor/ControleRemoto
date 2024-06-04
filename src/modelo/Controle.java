@@ -14,7 +14,7 @@ public abstract class Controle {
     }
 
     //Botão de power (ligar/desligar)
-    public abstract boolean power();
+    public abstract String power();
 
     //Botão para verificar qual o volume *
     public void verVolume() {

@@ -8,14 +8,15 @@ public class ControleTV extends Controle{
     }
 
      //Botão de power (ligar/desligar)
-     public boolean power() {
+     public String power() {
+        String a;
         setPower();
         if (isPower() == true) {
-            System.out.println("TV ligada");
+            return a = "TV ligada";
         }else{
-            System.out.println("Tv Desligada");        
+            return a = "TV desligada";      
         }
-        return isPower();
+        
     }
 
      //Botão de mudar canais para + 
