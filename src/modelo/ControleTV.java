@@ -11,7 +11,7 @@ public class ControleTV extends Controle{
      public String power() {
         String a;
         setPower();
-        if (isPower() == true) {
+        if (isPower() == true) { 
             return a = "TV ligada";
         }else{
             return a = "TV desligada";      
@@ -40,9 +40,9 @@ public class ControleTV extends Controle{
         }    
     
     //Realizar mudança de canal diretamente
-    public int definirCanal(int canal) {
+    public void definirCanal(int canal) {
             setCanal(canal);
-            return verCanal();
+            verCanal();
     }
 
     //Botão para verificar qual o canal *
@@ -63,5 +63,5 @@ public class ControleTV extends Controle{
             this.canal = canal;
         }
     }
-
+    
 }
