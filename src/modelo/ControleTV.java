@@ -9,47 +9,46 @@ public class ControleTV extends Controle{
 
      //Botão de power (ligar/desligar)
      public String power() {
-        String a;
         setPower();
         if (isPower() == true) { 
-            return a = "TV ligada";
+            return "TV ligada";
         }else{
-            return a = "TV desligada";      
+            return "TV desligada";      
         }
-        
     }
 
      //Botão de mudar canais para + 
-     public void maisCanais() {
+     public String maisCanais() {
         if (getCanal() == 100) {
             setCanal(canal=0);
         }else{
             setCanal(canal+=1);
         } 
-        verCanal();
+        return verCanal();
     }
 
     //Botão de mudar canais para -
-    public void menosCanais() {
+    public String menosCanais() {
         if (getCanal() == 0) {
             setCanal(canal=100);
         }else{
             setCanal(canal-=1);
         }
-            verCanal();
+            return verCanal();
         }    
     
     //Realizar mudança de canal diretamente
-    public void definirCanal(int canal) {
+    public String definirCanal(int canal) {
             setCanal(canal);
-            verCanal();
+            return verCanal();              
     }
 
     //Botão para verificar qual o canal *
-    public int verCanal(){
+    public String verCanal(){
          if (isPower() == true) {
-            System.out.println("Canal " + getCanal());
-         }return getCanal();
+            return "Canal " + getCanal();
+         }
+        return "TV desligada"; 
     }
 
     //métodos de acesso (getter e setter) ao canal
@@ -59,9 +58,7 @@ public class ControleTV extends Controle{
     }
 
     private void setCanal(int canal) {
-        if (isPower() == true){
             this.canal = canal;
-        }
     }
     
 }
