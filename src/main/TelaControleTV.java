@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
@@ -18,7 +19,7 @@ public class TelaControleTV extends JFrame {
         
         //Configura um titulo para o botão
         setTitle("Controle de TV");
-
+ 
         //Cria um painel
         JPanel painel = new JPanel();
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS)); 
@@ -45,7 +46,10 @@ public class TelaControleTV extends JFrame {
         
         //Cria um painel para os botões numericos
         JPanel numPainel = new JPanel();
-        numPainel.setLayout( new FlowLayout(FlowLayout.CENTER, 10,10));
+        numPainel.setLayout(new GridLayout(5, 5, 10, 10));
+        // 10px de espaço entre botões
+
+        
         
         //Cria 9 botões númericos
         for (int i=0; i<=9; i++){
@@ -58,13 +62,26 @@ public class TelaControleTV extends JFrame {
                 Actions.buttonPressed(CANAL);
                 }
             });
-            numPainel.add(numButton);
+            numPainel.add(numButton, BorderLayout.CENTER);
         }
 
-    
+        JPanel moreLessChannel = new JPanel();
+        moreLessChannel.setLayout(new GridLayout(1, 2, 10, 10));
+
+        JButton channelMore = new JButton("CH +");
+        channelMore.setBackground(Color.WHITE);
+        channelMore.setForeground(Color.BLACK);
+        moreLessChannel.add(channelMore);
+
+        JButton channelLess = new JButton("CH -");
+        channelLess.setBackground(Color.WHITE);
+        channelLess.setForeground(Color.BLACK);
+        moreLessChannel.add(channelLess);
 
         //Adiciona o painel númerico ao painel princial
         painel.add(numPainel, BorderLayout.CENTER);
+        painel.add(moreLessChannel, BorderLayout.CENTER);
+        
 
         //Adiciona o painel principal a janela
         add(painel, BorderLayout.CENTER);
