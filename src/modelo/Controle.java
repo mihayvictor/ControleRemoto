@@ -69,7 +69,7 @@ public abstract class Controle {
     }
 
     //métodos de acesso (is e setter) ao power
-    protected boolean isPower() {
+    public boolean isPower() {
         return this.power;
     }
 

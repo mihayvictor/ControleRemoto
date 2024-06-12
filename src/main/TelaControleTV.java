@@ -15,8 +15,6 @@ import acoes.Actions;
 public class TelaControleTV extends JFrame {
 
     public TelaControleTV(){
-
-        Actions acoes = new Actions();
         
         //Configura um titulo para o botão
         setTitle("Controle de TV");
@@ -38,7 +36,7 @@ public class TelaControleTV extends JFrame {
         botaoPower.setForeground(Color.WHITE);
         botaoPower.addActionListener(new ActionListener() {   
             public void actionPerformed(ActionEvent e) {
-                acoes.actionPower();
+                Actions.actionPower();
             }
         });
 
@@ -50,18 +48,20 @@ public class TelaControleTV extends JFrame {
         numPainel.setLayout( new FlowLayout(FlowLayout.CENTER, 10,10));
         
         //Cria 9 botões númericos
-        for (int i=1; i<=9; i++){
+        for (int i=0; i<=9; i++){
             JButton numButton = new JButton(Integer.toString(i));
             numButton.setBackground(Color.WHITE);
             numButton.setForeground(Color.BLACK);
             final int CANAL = i;
             numButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                acoes.actionsNums(CANAL);
+                Actions.buttonPressed(CANAL);
                 }
             });
             numPainel.add(numButton);
         }
+
+    
 
         //Adiciona o painel númerico ao painel princial
         painel.add(numPainel, BorderLayout.CENTER);
