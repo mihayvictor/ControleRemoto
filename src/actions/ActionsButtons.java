@@ -5,7 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-import modelo.ControleTV;
+
+import model.ControleTV;
 
 public class ActionsButtons {
 private static int fistDigit = -1;

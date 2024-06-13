@@ -1,4 +1,4 @@
-package modelo;
+package model;
 
 public class ControleTV extends Control{
     private int canal;
