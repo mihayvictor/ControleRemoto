@@ -1,4 +1,4 @@
-package acoes;
+package actions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import modelo.ControleTV;
 
-public class Actions {
+public class ActionsButtons {
 private static int fistDigit = -1;
 private static Timer timer;
 

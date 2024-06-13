@@ -1,6 +1,6 @@
 package modelo;
 
-public abstract class Controle {
+public abstract class Control {
 
     private int volume;
     private boolean power;
@@ -8,7 +8,7 @@ public abstract class Controle {
     //Métodos marcados com * geralmente não são encontrados botões em controles
 
     //Construtor de controle
-    public Controle(){
+    public Control(){
         volume = 10;
         power = false;
     }

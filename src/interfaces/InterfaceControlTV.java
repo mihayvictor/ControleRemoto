@@ -1,8 +1,7 @@
-package main;
+package interfaces;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -10,12 +9,13 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import acoes.Actions;
+
+import actions.ActionsButtons;
 
 
-public class TelaControleTV extends JFrame {
+public class InterfaceControlTV extends JFrame {
 
-    public TelaControleTV(){
+    public InterfaceControlTV(){
         
         //Configura um titulo para o botão
         setTitle("Controle de TV");
@@ -37,7 +37,7 @@ public class TelaControleTV extends JFrame {
         botaoPower.setForeground(Color.WHITE);
         botaoPower.addActionListener(new ActionListener() {   
             public void actionPerformed(ActionEvent e) {
-                Actions.actionPower();
+                ActionsButtons.actionPower();
             }
         });
 
@@ -59,7 +59,7 @@ public class TelaControleTV extends JFrame {
             final int CANAL = i;
             numButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Actions.buttonPressed(CANAL);
+                ActionsButtons.buttonPressed(CANAL);
                 }
             });
             numPainel.add(numButton, BorderLayout.CENTER);
@@ -96,10 +96,7 @@ public class TelaControleTV extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) throws Exception {
-         new TelaControleTV();
-
-    }
+   
 
     
 }

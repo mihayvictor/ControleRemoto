@@ -1,6 +1,6 @@
 package modelo;
 
-public class ControleTV extends Controle{
+public class ControleTV extends Control{
     private int canal;
 
      public ControleTV(){
