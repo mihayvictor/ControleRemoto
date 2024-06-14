@@ -55,4 +55,12 @@ private static Timer timer;
         //Exibe uma mensagem quando o botão é clicado
                 JOptionPane.showMessageDialog(null, controleTV.definirCanal(channel));
     }
+
+    public static void channelMore(){
+        JOptionPane.showMessageDialog(null, controleTV.maisCanais());
+    }
+
+    public static void channelLess(){
+        JOptionPane.showMessageDialog(null, controleTV.menosCanais());
+    }
 }

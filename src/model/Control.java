@@ -1,5 +1,7 @@
 package model;
 
+import java.util.function.Supplier;
+
 public abstract class Control {
 
     private int volume;
@@ -76,4 +78,6 @@ public abstract class Control {
     protected void setPower() {
         power = !isPower();
         }
+
+         
 }

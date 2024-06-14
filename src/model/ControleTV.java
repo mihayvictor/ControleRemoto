@@ -1,5 +1,7 @@
 package model;
 
+import java.util.function.Supplier;
+
 public class ControleTV extends Control{
     private int canal;
 
@@ -10,45 +12,45 @@ public class ControleTV extends Control{
      //Botão de power (ligar/desligar)
      public String power() {
         setPower();
-        if (isPower() == true) { 
-            return "TV ligada";
-        }else{
-            return "TV desligada";      
-        }
+        return isPower() ? "Tv Ligada" : "TV Desligada";
     }
 
      //Botão de mudar canais para + 
      public String maisCanais() {
-        if (getCanal() == 100) {
-            setCanal(canal=0);
-        }else{
-            setCanal(canal+=1);
-        } 
+        return executeIfPowered(() -> {
+            if (getCanal() == 99) {
+                setCanal(canal=0);
+            }else{
+                setCanal(canal+=1);
+            } 
+        
         return verCanal();
+        });
     }
 
     //Botão de mudar canais para -
     public String menosCanais() {
+        return executeIfPowered(() -> {
         if (getCanal() == 0) {
-            setCanal(canal=100);
+            setCanal(canal=99);
         }else{
             setCanal(canal-=1);
         }
             return verCanal();
-        }    
+        });
+    }    
     
     //Realizar mudança de canal diretamente
     public String definirCanal(int canal) {
+        return executeIfPowered(() -> {
             setCanal(canal);
-            return verCanal();              
+            return verCanal();
+        });              
     }
 
     //Botão para verificar qual o canal *
     public String verCanal(){
-         if (isPower() == true) {
-            return "Canal " + getCanal();
-         }
-        return "TV desligada"; 
+         return isPower()? "Canal " + getCanal() : "Tv desligada";
     }
 
     //métodos de acesso (getter e setter) ao canal
@@ -60,5 +62,12 @@ public class ControleTV extends Control{
     private void setCanal(int canal) {
             this.canal = canal;
     }
+    
+     // Método auxiliar para executar ação se a TV estiver ligada
+     public String executeIfPowered(Supplier<String> action) {
+        return isPower() ? action.get() : "TV desligada";
+    }
+
+    
     
 }

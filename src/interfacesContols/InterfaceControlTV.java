@@ -71,11 +71,21 @@ public class InterfaceControlTV extends JFrame {
         JButton channelMore = new JButton("CH +");
         channelMore.setBackground(Color.WHITE);
         channelMore.setForeground(Color.BLACK);
+        channelMore.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                ActionsButtons.channelMore();
+            }
+        });
         moreLessChannel.add(channelMore);
 
         JButton channelLess = new JButton("CH -");
         channelLess.setBackground(Color.WHITE);
         channelLess.setForeground(Color.BLACK);
+        channelLess.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                ActionsButtons.channelLess();
+            }
+        });
         moreLessChannel.add(channelLess);
 
         //Adiciona o painel númerico ao painel princial
