@@ -3,6 +3,7 @@ package actions;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
@@ -63,4 +64,5 @@ private static Timer timer;
     public static void channelLess(){
         JOptionPane.showMessageDialog(null, controleTV.menosCanais());
     }
+
 }

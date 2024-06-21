@@ -1,14 +1,20 @@
 package interfacesContols;
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.text.StyledEditorKit.AlignmentAction;
 
 import actions.ActionsButtons;
 
@@ -20,17 +26,17 @@ public class InterfaceControlTV extends JFrame {
         //Configura um titulo para o botão
         setTitle("Controle de TV");
  
-        //Cria um painel
-        JPanel painel = new JPanel();
-        painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS)); 
-        
+        //Criando panel principal
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+                
+        //Painel de Power
+        JPanel powerPanel = new JPanel();
+        layoutPanel(powerPanel);
+
         //Cria o botão de power para o controle e define dimensões
         JButton botaoPower = new JButton("Power");
-        botaoPower.setAlignmentX(CENTER_ALIGNMENT);
-        botaoPower.setPreferredSize(new Dimension(100, 40));
         botaoPower.setFocusPainted(false);
-        botaoPower.setBorderPainted(false); 
-        botaoPower.setOpaque(true); 
 
         //Adiciona a ação de ligar/desligar a TV ao botão 
         botaoPower.setBackground(Color.BLACK);
@@ -40,73 +46,98 @@ public class InterfaceControlTV extends JFrame {
                 ActionsButtons.actionPower();
             }
         });
+        powerPanel.add(botaoPower);
 
-        //Coloca o botão na da tela 
-        painel.add(botaoPower);
+        //Coloca o Painel de power na da tela 
+        panel.add(powerPanel);
+        space(panel);
         
-        //Cria um painel para os botões numericos
+        //Cria um panel para os botões numericos
         JPanel numPainel = new JPanel();
         numPainel.setLayout(new GridLayout(5, 5, 10, 10));
         // 10px de espaço entre botões
 
-        
-        
         //Cria 9 botões númericos
         for (int i=0; i<=9; i++){
             JButton numButton = new JButton(Integer.toString(i));
-            numButton.setBackground(Color.WHITE);
-            numButton.setForeground(Color.BLACK);
+            colorButton(numButton);
             final int CANAL = i;
             numButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ActionsButtons.buttonPressed(CANAL);
                 }
             });
-            numPainel.add(numButton, BorderLayout.CENTER);
+            numPainel.add(numButton);
         }
 
-        JPanel moreLessChannel = new JPanel();
-        moreLessChannel.setLayout(new GridLayout(1, 2, 10, 10));
+        //Adiciona o panel númerico ao panel princial
+        panel.add(numPainel);
+        space(panel);
+
+        //Cria painel para os botões de mais e menos canais
+        JPanel moreLessPanel = new JPanel();
+        layoutPanel(moreLessPanel);
 
         JButton channelMore = new JButton("CH +");
-        channelMore.setBackground(Color.WHITE);
-        channelMore.setForeground(Color.BLACK);
+        colorButton(channelMore);
         channelMore.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 ActionsButtons.channelMore();
             }
         });
-        moreLessChannel.add(channelMore);
+        moreLessPanel.add(channelMore);
 
         JButton channelLess = new JButton("CH -");
-        channelLess.setBackground(Color.WHITE);
-        channelLess.setForeground(Color.BLACK);
+        colorButton(channelLess);
         channelLess.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 ActionsButtons.channelLess();
             }
         });
-        moreLessChannel.add(channelLess);
+        moreLessPanel.add(channelLess);
 
-        //Adiciona o painel númerico ao painel princial
-        painel.add(numPainel, BorderLayout.CENTER);
-        painel.add(moreLessChannel, BorderLayout.CENTER);
+        panel.add(moreLessPanel);
+        space(panel);
+
+        //Criando painel para os botões de som
+        JPanel soundPanel = new JPanel();
+        layoutPanel(soundPanel);
         
+        JButton soundMoreButton = new JButton("Vol +");
+        colorButton(soundMoreButton);
+        soundPanel.add(soundMoreButton);
 
-        //Adiciona o painel principal a janela
-        add(painel, BorderLayout.CENTER);
+        JButton soundLessButton = new JButton("Vol -");
+        colorButton(soundLessButton);
+        soundPanel.add(soundLessButton);
+
+        panel.add(soundPanel);
+
+        //Adiciona o panel principal a janela
+        add(panel, BorderLayout.CENTER);
 
         //Configura o comportamento de fechamento da janela
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Configurar o tamanho da janela
-        setSize(250, 250);
+        setSize(250, 300);
 
         // Tornar a janela visível
         setVisible(true);
     }
 
-   
+    private static void colorButton (JButton button){
+        button.setBackground(Color.WHITE);
+        button.setForeground(Color.BLACK);
+    }
+
+    private static void layoutPanel(JPanel jPanel){
+        jPanel.setLayout(new GridLayout(1, 2, 10, 10));
+    }
+    
+    private static void space(JPanel jPanel){
+        jPanel.add(Box.createRigidArea(new Dimension(0,10)));
+    }
 
     
 }

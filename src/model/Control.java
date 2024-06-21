@@ -79,5 +79,5 @@ public abstract class Control {
         power = !isPower();
         }
 
-         
+        
 }
