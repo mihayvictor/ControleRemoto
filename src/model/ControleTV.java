@@ -3,19 +3,21 @@ package model;
 import java.util.function.Supplier;
 
 public class ControleTV extends Control{
-    private int canal;
+    private int channel;
     
      public ControleTV(){
-        canal = 10;
+        channel = 10;
     }
 
-     //Méto de ligar/desligar
+     //Método de ligar/desligar
+     @Override
      public String power() {
         setPower();
         return isPower() ? "Tv Ligada" : "TV Desligada";
     }
 
     //Método para mudar volume para +
+    @Override
     public String moreVol(){
         return executeIfPowered(() -> {
             if (getVolume() < 100) {
@@ -29,6 +31,7 @@ public class ControleTV extends Control{
     }
 
     //Método para mudar volume para -
+    @Override
     public String lessVol(){
         return executeIfPowered(() -> {
         if (getVolume() > 0) {
@@ -41,67 +44,73 @@ public class ControleTV extends Control{
         });
     }
 
-     //Método mute (colocar e tirar do mudo) 
-     public void mute(){
+     //Método mute (colocar e tirar do mudo)
+     @Override 
+     public String mute(){
         if (getVolume() != 0) {
             setVolume(0);
         }else{
             setVolume(getVolume()+1);
         }    
-        viewVol();
+        return viewVol();
     }
 
-     //Método para verificar qual o volume 
+     //Método para viewificar qual o volume
+     @Override 
      public String viewVol() {
         return isPower()? " Volume " + getVolume() : "TV desligada";
     }
 
-     //Método de mudar canais para + 
-     public String maisCanais() {
+     //Método de mudar canal para + 
+     public String moreChannels() {
         return executeIfPowered(() -> {
-            if (getCanal() == 99) {
-                setCanal(0);
+            if (getChannel() == 99) {
+                setChannel(0);
             }else{
-                setCanal(getCanal()+1);
+                setChannel(getChannel()+1);
             } 
         
-        return verCanal();
+        return viewChannel();
         });
     }
 
-    //Método de mudar canais para -
-    public String menosCanais() {
+    //Método de mudar Canal para -
+    public String lessChannels() {
         return executeIfPowered(() -> {
-        if (getCanal() == 0) {
-            setCanal(99);
+        if (getChannel() == 0) {
+            setChannel(99);
         }else{
-            setCanal(getCanal()-1);
+            setChannel(getChannel()-1);
         }
-            return verCanal();
+            return viewChannel();
         });
     }   
     
     //Método Realizar mudança de canal diretamente
-    public String definirCanal(int Dcanal) {
+    public String fixChannel(int fixChannel) {
         return executeIfPowered(() -> {
-            setCanal(Dcanal);
-            return verCanal();
+            setChannel(fixChannel);
+            return viewChannel();
         });              
     }
 
-    //Métdo para verificar qual o canal 
-    public String verCanal(){
-         return isPower()? "Canal " + getCanal() : "Tv desligada";
+    //Métdo para viewificar qual o channel 
+    public String viewChannel(){
+         return isPower()? "Canal " + getChannel() : "Tv desligada";
+    }
+
+    public String info(){
+        return isPower() ? viewChannel() + "\n" + viewVol() : "TV desligada";
     }
 
     //métodos de acesso (getter e setter) ao canal
-    private int getCanal() {
+    private int getChannel() {
         if (isPower() == true){
-        }return canal;
+        }return channel;
     }
 
-    private void setCanal(int canal) {
-            this.canal = canal;
+    private void setChannel(int channel) {
+            this.channel = channel;
     }
     
      // Método auxiliar para executar ação se a TV estiver ligada

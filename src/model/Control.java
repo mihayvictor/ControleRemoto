@@ -17,6 +17,8 @@ public abstract class Control {
     public abstract String lessVol();
     //Método para ver o volume
     public abstract String viewVol();
+    //Método mute
+    public abstract String mute();
 
     //métodos de acesso (getter e setter) ao volume
     protected int getVolume() {
