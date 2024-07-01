@@ -11,7 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import actions.ActionsButtons;
+import actions.ActionsButtonsTV;
 
 public class InterfaceControlTV extends JFrame {
 
@@ -37,7 +37,7 @@ public class InterfaceControlTV extends JFrame {
         botaoPower.setForeground(Color.WHITE);
         botaoPower.addActionListener(new ActionListener() {   
             public void actionPerformed(ActionEvent e) {
-                ActionsButtons.actionPower();
+                ActionsButtonsTV.actionPower();
             }
         });
         powerPanel.add(botaoPower);
@@ -58,7 +58,7 @@ public class InterfaceControlTV extends JFrame {
             final int CANAL = i;
             numButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ActionsButtons.buttonPressed(CANAL);
+                ActionsButtonsTV.buttonPressed(CANAL);
                 }
             });
             numPainel.add(numButton);
@@ -76,7 +76,7 @@ public class InterfaceControlTV extends JFrame {
         colorButton(channelMore);
         channelMore.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                ActionsButtons.channelMore();
+                ActionsButtonsTV.channelMore();
             }
         });
         moreLessPanel.add(channelMore);
@@ -85,7 +85,7 @@ public class InterfaceControlTV extends JFrame {
         colorButton(channelLess);
         channelLess.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                ActionsButtons.channelLess();
+                ActionsButtonsTV.channelLess();
             }
         });
         moreLessPanel.add(channelLess);
@@ -99,10 +99,20 @@ public class InterfaceControlTV extends JFrame {
         
         JButton soundMoreButton = new JButton("Vol +");
         colorButton(soundMoreButton);
+        soundMoreButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                ActionsButtonsTV.soundMoreButton();
+            }
+        });
         soundPanel.add(soundMoreButton);
 
         JButton soundLessButton = new JButton("Vol -");
         colorButton(soundLessButton);
+        soundLessButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                ActionsButtonsTV.soundLessButton();
+            }
+        });
         soundPanel.add(soundLessButton);
 
         panel.add(soundPanel);

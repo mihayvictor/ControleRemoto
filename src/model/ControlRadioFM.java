@@ -1,7 +1,7 @@
 package model;
 // package modelo;
 
-// public class ControleRadioFM extends Controle {
+// public class ControleRadioFM implementes Controle {
 //     private double frequecia;
 
 //     public ControleRadioFM(){

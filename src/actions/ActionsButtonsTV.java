@@ -2,14 +2,12 @@ package actions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 import model.ControleTV;
 
-public class ActionsButtons {
+public class ActionsButtonsTV {
 private static int fistDigit = -1;
 private static Timer timer;
 
@@ -38,7 +36,8 @@ private static Timer timer;
         });
         timer.setRepeats(false);
         timer.start();
-    }else{
+
+        }else{
         //Segundo botão pressionado
         int secondDigit = channel;
         int fullchannel = fistDigit *10 + secondDigit;
@@ -65,4 +64,11 @@ private static Timer timer;
         JOptionPane.showMessageDialog(null, controleTV.menosCanais());
     }
 
+    public static void soundMoreButton(){
+        JOptionPane.showMessageDialog(null, controleTV.moreVol());
+    }
+    
+    public static void soundLessButton(){
+        JOptionPane.showMessageDialog(null, controleTV.lessVol());
+    }
 }
